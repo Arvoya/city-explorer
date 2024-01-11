@@ -44,7 +44,7 @@ below.
 
 ## Architectur
 
-![webrequest](./public/drawing.png)
+![Web Drawing](./public/drawing.png)
 
 ### Languages & tools
 
@@ -64,6 +64,6 @@ Estimate of time needed to complete: 20 min
 
 Start time: 2:30
 
-Finish time: _____
+Finish time: 2:58
 
-Actual time needed to complete: _____
+Actual time needed to complete: 28 min
