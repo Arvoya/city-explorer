@@ -93,3 +93,13 @@ Finish time: 9:00pm
 Actual time needed to complete: 3 hours 11 min
 
 ---
+
+Name of feature: 
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:49pm
+
+Finish time: 9:00pm
+
+Actual time needed to complete: 3 hours 11 min
