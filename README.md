@@ -67,3 +67,15 @@ Start time: 2:30
 Finish time: 2:58
 
 Actual time needed to complete: 28 min
+
+---
+
+Name of feature: Locations: As a user of City Explorer, I want to enter the name of a location so that I can see the exact latitude and longitude of that location.
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:55pm
+
+Finish time:
+
+Actual time needed to complete:
