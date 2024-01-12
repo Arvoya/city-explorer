@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Map from './Map';
+import Errors from './Errors'
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
@@ -16,6 +17,8 @@ class Explore extends React.Component {
       location: null,
       lat: null,
       lon: null,
+      error: null,
+      showModal: false
     }
   }
 
@@ -34,12 +37,20 @@ class Explore extends React.Component {
           location: response.data[0].display_name,
           lat: response.data[0].lat,
           lon: response.data[0].lon,
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          // Optionally, update the state to inform the user
         });
       })
+        .catch(error => {
+          this.toggleModal();
+          this.setState({
+            error: error.message
+          })
+        });
+  }
+
+  toggleModal = () => {
+    this.setState({
+      showModal: !this.state.showModal
+    })
   }
 
   render() {
@@ -63,7 +74,17 @@ class Explore extends React.Component {
           </Form.Text>
         </form>
       </div>
-      <Map location={this.state.location} lat={this.state.lat} lon={this.state.lon}/>
+      <Map 
+      location={this.state.location} 
+      lat={this.state.lat} 
+      lon={this.state.lon}
+      />
+
+      <Errors 
+      showModal={this.state.showModal}
+      toggleModal={this.toggleModal}
+      errorMessage={this.state.error}/>
+
       </>
     )
   }
