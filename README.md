@@ -79,3 +79,17 @@ Start time: 3:55pm
 Finish time: 4:56pm
 
 Actual time needed to complete: 1hour and 1 minute
+
+---
+
+Name of feature: Map: As a user, I want to see a map of the city so that I can see the layout of the area I want to explore.
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 5:49pm
+
+Finish time: 9:00pm
+
+Actual time needed to complete: 3 hours 11 min
+
+---

@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Map from './Map';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
@@ -32,27 +35,35 @@ class Explore extends React.Component {
           lat: response.data[0].lat,
           lon: response.data[0].lon,
         })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          // Optionally, update the state to inform the user
+        });
       })
   }
 
   render() {
     return (
       <>
-      <form onSubmit={this.handleForm}>
-        <Form.Label htmlFor="search">Search City:</Form.Label>
-        <Form.Control
-          type="input"
-          id="citySearch"
-          onChange={this.updateCitySearch}
-          
-          />
-      <button type='submit'>Explore!</button>
-      <br />
-      <Form.Text id="cityDescription" muted>
-          {this.state.location ? 'Location: ' + this.state.location + ' | Lat: ' + this.state.lat + ' | Lon: ' + this.state.lon : 'Search any city in the USA!'}
-        </Form.Text>
-
-      </form>
+      <div className="search-container">
+        <form onSubmit={this.handleForm}>
+          <InputGroup className="mb-3">
+            <Form.Control
+              placeholder="City Name"
+              aria-label="City Name"
+              aria-describedby="basic-addon2"
+              onChange={this.updateCitySearch}
+            />
+            <Button size='lg' variant="outline-light" type="submit">
+              Explore!
+            </Button>
+          </InputGroup>
+          <Form.Text id="cityDescription" muted>
+            {this.state.location ? 'Location: ' + this.state.location + ' | Lat: ' + this.state.lat + ' | Lon: ' + this.state.lon : 'Search any city in the USA!'}
+          </Form.Text>
+        </form>
+      </div>
+      <Map location={this.state.location} lat={this.state.lat} lon={this.state.lon}/>
       </>
     )
   }
