@@ -94,12 +94,12 @@ Actual time needed to complete: 3 hours 11 min
 
 ---
 
-Name of feature: 
+Name of feature: Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
-Estimate of time needed to complete: 1 hour
+Estimate of time needed to completer: 1 hour
 
-Start time: 5:49pm
+Start time: 11:29am
 
-Finish time: 9:00pm
+Finish time: 12:20pm
 
-Actual time needed to complete: 3 hours 11 min
+Actual time needed to complete: 51 minutes
