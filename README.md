@@ -1,6 +1,6 @@
-# PROJECT NAME
+# City Explorer
 
-project description goes here.
+A webapp to explore and discover details on various cities!
 
 ## Getting Started
 
@@ -42,9 +42,15 @@ below.
 
     npm run build
 
-## Architectur
+## Architecture
+
+### Single Server
 
 ![Web Drawing](./public/drawing.png)
+
+### Double Server
+
+![Web Drawing 2](./public/drawing2.png)
 
 ### Languages & tools
 
@@ -55,8 +61,15 @@ below.
 * Bootstrap
 * Axios
 * LocationIQ API
+* ExpressJS
 
 ## Change Log
+
+## Change Log
+
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+## Feature Log
 
 Name of feature: Set up your React repository & API keys
 
@@ -99,6 +112,18 @@ Name of feature: Errors: As a user, I want clear messages if something goes wron
 Estimate of time needed to completer: 1 hour
 
 Start time: 11:29am
+
+Finish time: 12:20pm
+
+Actual time needed to complete: 51 minutes
+
+---
+
+Name of feature: Weather (placeholder): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
+
+Estimate of time needed to completer: 2hour
+
+Start time: 6:32pm
 
 Finish time: 12:20pm
 

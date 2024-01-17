@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Map from './Map';
 import Errors from './Errors'
+import Weather from './Weather.jsx';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
@@ -18,34 +19,51 @@ class Explore extends React.Component {
       lat: null,
       lon: null,
       error: null,
-      showModal: false
+      showModal: false,
+      forecast: null,
     }
   }
 
 
   updateCitySearch = (event) => {
     this.setState({
-      citySearched: event.target.value,
+      citySearched: event.target.value.toLowerCase(),
     })
   }
 
   handleForm = (event) => {
     event.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.citySearched}&format=json`)
-      .then(response => {
-        this.setState({ 
-          location: response.data[0].display_name,
-          lat: response.data[0].lat,
-          lon: response.data[0].lon,
-        });
-      })
+        .then(response => {
+          this.setState({
+            location: response.data[0].display_name,
+            lat: response.data[0].lat,
+            lon: response.data[0].lon,
+          }, () => {
+            axios.get(`http://localhost:3001/data/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
+                .then(response => {
+                  this.setState({
+                    forecast: response.data.data
+                  })
+                })
+                .catch(error => {
+                  this.toggleModal();
+                  this.setState({
+                    error: error.message,
+                    forecast: null
+                  });
+                });
+          });
+        })
         .catch(error => {
+          // Handle errors from the first API call
           this.toggleModal();
           this.setState({
             error: error.message
-          })
+          });
         });
   }
+
 
   toggleModal = () => {
     this.setState({
@@ -65,7 +83,7 @@ class Explore extends React.Component {
               aria-describedby="basic-addon2"
               onChange={this.updateCitySearch}
             />
-            <Button size='lg' variant="outline-light" type="submit">
+            <Button size='lg' variant="primary" type="submit">
               Explore!
             </Button>
           </InputGroup>
@@ -74,7 +92,8 @@ class Explore extends React.Component {
           </Form.Text>
         </form>
       </div>
-      <Map 
+      <Weather forecast={this.state.forecast} />
+      <Map
       location={this.state.location} 
       lat={this.state.lat} 
       lon={this.state.lon}
@@ -88,8 +107,6 @@ class Explore extends React.Component {
       </>
     )
   }
-
-
 }
 
 
