@@ -67,7 +67,7 @@ below.
 
 ## Change Log
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+01-17-2024 - Application now has a fully-functional express server, with a GET route for the weather(placeholder) resource. -->
 
 ## Feature Log
 
@@ -128,3 +128,15 @@ Start time: 6:32pm
 Finish time: 12:20pm
 
 Actual time needed to complete: 51 minutes
+
+---
+
+Name of feature: Errors (revisited): As a user, I want clear messages if something goes wrong, so I know if I need to make any changes or try again in a different manner.
+
+Estimate of time needed to complete: 30 minutes
+
+Start time: 10:57pm
+
+Finish time:
+
+Actual time needed to complete: 
