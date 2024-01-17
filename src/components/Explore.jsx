@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Map from './Map';
 import Errors from './Errors'
+import Weather from './Weather.jsx';
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
@@ -25,27 +26,41 @@ class Explore extends React.Component {
 
   updateCitySearch = (event) => {
     this.setState({
-      citySearched: event.target.value,
+      citySearched: event.target.value.toLowerCase(),
     })
   }
 
   handleForm = (event) => {
     event.preventDefault();
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.citySearched}&format=json`)
-      .then(response => {
-        this.setState({ 
-          location: response.data[0].display_name,
-          lat: response.data[0].lat,
-          lon: response.data[0].lon,
-        });
-      })
+        .then(response => {
+          this.setState({
+            location: response.data[0].display_name,
+            lat: response.data[0].lat,
+            lon: response.data[0].lon,
+          }, () => {
+            axios.get(`http://localhost:3001/data/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
+                .then(response => {
+                  console.log(response);
+                })
+                .catch(error => {
+                  this.toggleModal();
+                  console.log(error);
+                  this.setState({
+                    error: error.message
+                  });
+                });
+          });
+        })
         .catch(error => {
+          // Handle errors from the first API call
           this.toggleModal();
           this.setState({
             error: error.message
-          })
+          });
         });
   }
+
 
   toggleModal = () => {
     this.setState({
@@ -74,7 +89,8 @@ class Explore extends React.Component {
           </Form.Text>
         </form>
       </div>
-      <Map 
+      <Weather/>
+      <Map
       location={this.state.location} 
       lat={this.state.lat} 
       lon={this.state.lon}
@@ -88,8 +104,6 @@ class Explore extends React.Component {
       </>
     )
   }
-
-
 }
 
 
