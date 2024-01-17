@@ -47,17 +47,27 @@ class Explore extends React.Component {
                   })
                 })
                 .catch(error => {
+                  console.log(error)
                   this.toggleModal();
+                  if(error.response){
+
                   this.setState({
-                    error: error.message,
+                    error: `${error.message}, ${error.response.data.error}`,
                     forecast: null
                   });
+                  } else {
+                    this.setState({
+                      error: `${error.message}, Weather Server is offline.`,
+                      forecast: null
+                    });
+                  }
                 });
           });
         })
         .catch(error => {
           // Handle errors from the first API call
           this.toggleModal();
+          console.log(error)
           this.setState({
             error: error.message
           });
