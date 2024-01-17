@@ -19,7 +19,8 @@ class Explore extends React.Component {
       lat: null,
       lon: null,
       error: null,
-      showModal: false
+      showModal: false,
+      forecast: null,
     }
   }
 
@@ -41,13 +42,15 @@ class Explore extends React.Component {
           }, () => {
             axios.get(`http://localhost:3001/data/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
                 .then(response => {
-                  console.log(response);
+                  this.setState({
+                    forecast: response.data.data
+                  })
                 })
                 .catch(error => {
                   this.toggleModal();
-                  console.log(error);
                   this.setState({
-                    error: error.message
+                    error: error.message,
+                    forecast: null
                   });
                 });
           });
@@ -80,7 +83,7 @@ class Explore extends React.Component {
               aria-describedby="basic-addon2"
               onChange={this.updateCitySearch}
             />
-            <Button size='lg' variant="outline-light" type="submit">
+            <Button size='lg' variant="primary" type="submit">
               Explore!
             </Button>
           </InputGroup>
@@ -89,7 +92,7 @@ class Explore extends React.Component {
           </Form.Text>
         </form>
       </div>
-      <Weather/>
+      <Weather forecast={this.state.forecast} />
       <Map
       location={this.state.location} 
       lat={this.state.lat} 
