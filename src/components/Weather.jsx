@@ -26,13 +26,6 @@ class Weather extends React.Component  {
         }
 
 
-
-        return(
-          <>
-
-
-          </>
-        )
     }
 
 

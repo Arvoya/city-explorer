@@ -40,7 +40,7 @@ class Explore extends React.Component {
             lat: response.data[0].lat,
             lon: response.data[0].lon,
           }, () => {
-            axios.get(`http://localhost:3001/data/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
+            axios.get(`http://localhost:3001/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
                 .then(response => {
                   this.setState({
                     forecast: response.data.data
