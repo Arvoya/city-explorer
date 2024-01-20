@@ -2,9 +2,6 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {ListGroupItem} from "react-bootstrap";
 
-// const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
-
-
 
 class Weather extends React.Component  {
 

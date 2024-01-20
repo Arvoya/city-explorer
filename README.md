@@ -114,7 +114,7 @@ Actual time needed to complete: 3 hours 11 min
 
 ---
 
-Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
+Errors: As a user, I want clear messages if something goes wrong, so I know if I need to make any changes or try again in a different manner.
 
 Estimate of time needed to completer: 1 hour
 
@@ -159,3 +159,15 @@ Start time: 12:51pm
 Finish time: 5:52pm
 
 Actual time needed to complete: 5 hours 
+
+---
+
+Movies: As a user of City Explorer, I want to see info about movies related to the city I searched, so that I can learn more about the destination.
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 6:42pm
+
+Finish time: 10:22pm
+
+Actual time needed to complete: 3 hours (lots of time refactoring)
