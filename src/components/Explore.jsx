@@ -11,8 +11,8 @@ const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
 class Explore extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       citySearched: '',
       location: null,
@@ -33,6 +33,10 @@ class Explore extends React.Component {
 
   handleForm = (event) => {
     event.preventDefault();
+    let searchQ = this.state.citySearched;
+    console.log('I am searchQ', searchQ)
+    if(searchQ !== undefined && searchQ !== ''){
+
     axios.get(`https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.citySearched}&format=json`)
         .then(response => {
           this.setState({
@@ -42,8 +46,9 @@ class Explore extends React.Component {
           }, () => {
             axios.get(`http://localhost:3001/weather?city=${this.state.citySearched}&lat=${this.state.lat}&lon=${this.state.lon}`)
                 .then(response => {
+                  console.log('I am the server response: ', response.data)
                   this.setState({
-                    forecast: response.data.data
+                    forecast: response.data
                   })
                 })
                 .catch(error => {
@@ -51,27 +56,31 @@ class Explore extends React.Component {
                   this.toggleModal();
                   if(error.response){
 
-                  this.setState({
-                    error: `${error.message}, ${error.response.data.error}`,
-                    forecast: null
-                  });
-                  } else {
                     this.setState({
-                      error: `${error.message}, Weather Server is offline.`,
+                      error: `${error.message}, ${error.response.data.response}`,
                       forecast: null
                     });
-                  }
+                    } else {
+                      this.setState({
+                        error: `${error.message}`,
+                        forecast: null
+                      });
+                    }
                 });
           });
         })
         .catch(error => {
           // Handle errors from the first API call
           this.toggleModal();
-          console.log(error)
+          console.log(error.message)
           this.setState({
-            error: error.message
+            error: error.message,
+            lat: null,
+            location: null,
+            lot: null
           });
         });
+    }
   }
 
 
@@ -107,6 +116,7 @@ class Explore extends React.Component {
       location={this.state.location} 
       lat={this.state.lat} 
       lon={this.state.lon}
+      error={this.state.error}
       />
 
       <Errors 

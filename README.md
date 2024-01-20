@@ -44,13 +44,17 @@ below.
 
 ## Architecture
 
-### Single Server
+### Single Server - LocationIQ
 
 ![Web Drawing](./public/drawing.png)
 
-### Double Server
+### Double Server - Express Local API
 
 ![Web Drawing 2](./public/drawing2.png)
+
+### Triple Server - Weatherbit
+
+![Web Drawing 2](././public/drawing3.png)
 
 ### Languages & tools
 
@@ -61,6 +65,7 @@ below.
 * Bootstrap
 * Axios
 * LocationIQ API
+* Weatherbit API
 * ExpressJS
 
 ## Change Log
@@ -69,9 +74,11 @@ below.
 
 01-17-2024 - Application now has a fully-functional express server, with a GET route for the weather(placeholder) resource. -->
 
+01-19-2024 - Application can now display a forecast, but only through a local server connection.
+
 ## Feature Log
 
-Name of feature: Set up your React repository & API keys
+Set up your React repository & API keys
 
 Estimate of time needed to complete: 20 min
 
@@ -83,7 +90,7 @@ Actual time needed to complete: 28 min
 
 ---
 
-Name of feature: Locations: As a user of City Explorer, I want to enter the name of a location so that I can see the exact latitude and longitude of that location.
+Locations: As a user of City Explorer, I want to enter the name of a location so that I can see the exact latitude and longitude of that location.
 
 Estimate of time needed to complete: 1 hour
 
@@ -95,7 +102,7 @@ Actual time needed to complete: 1hour and 1 minute
 
 ---
 
-Name of feature: Map: As a user, I want to see a map of the city so that I can see the layout of the area I want to explore.
+Map: As a user, I want to see a map of the city so that I can see the layout of the area I want to explore.
 
 Estimate of time needed to complete: 1 hour
 
@@ -107,7 +114,7 @@ Actual time needed to complete: 3 hours 11 min
 
 ---
 
-Name of feature: Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
+Errors: As a user, I want clear messages if something goes wrong so I know if I need to make any changes or try again in a different manner.
 
 Estimate of time needed to completer: 1 hour
 
@@ -119,7 +126,7 @@ Actual time needed to complete: 51 minutes
 
 ---
 
-Name of feature: Weather (placeholder): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
+Weather (placeholder): As a user of City Explorer, I want to see weather info for the city I searched, so that I know how to pack for an upcoming trip.
 
 Estimate of time needed to completer: 2hour
 
@@ -131,7 +138,7 @@ Actual time needed to complete: 51 minutes
 
 ---
 
-Name of feature: Errors (revisited): As a user, I want clear messages if something goes wrong, so I know if I need to make any changes or try again in a different manner.
+Errors (revisited): As a user, I want clear messages if something goes wrong, so I know if I need to make any changes or try again in a different manner.
 
 Estimate of time needed to complete: 30 minutes
 
@@ -140,3 +147,15 @@ Start time: 10:57pm
 Finish time: 11:19am
 
 Actual time needed to complete: 22 minutes
+
+---
+
+Weather (Live) - As a user of City Explorer, I want ot see weather info for the city I searched, so that I know how to pack for an upcoming trip
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 12:51pm
+
+Finish time: 5:52pm
+
+Actual time needed to complete: 5 hours 
