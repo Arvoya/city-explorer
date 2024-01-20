@@ -69,6 +69,8 @@ below.
 
 01-17-2024 - Application now has a fully-functional express server, with a GET route for the weather(placeholder) resource. -->
 
+01-19-2024 - Application can now display a forecast, but only through a local server connection.
+
 ## Feature Log
 
 Name of feature: Set up your React repository & API keys
@@ -140,3 +142,15 @@ Start time: 10:57pm
 Finish time: 11:19am
 
 Actual time needed to complete: 22 minutes
+
+---
+
+Weather (Live) - As a user of City Explorer, I want ot see weather info for the city I searched, so that I know how to pack for an upcoming trip
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 12:51pm
+
+Finish time: 5:52pm
+
+Actual time needed to complete: 5 hours 
