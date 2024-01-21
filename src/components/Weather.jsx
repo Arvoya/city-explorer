@@ -9,7 +9,7 @@ class Weather extends React.Component  {
 
     render() {
 
-        if (this.props.forecast != null) {
+        if (this.props.forecast) {
 
             return (
                 <ListGroup horizontal style={{ justifyContent: 'center', display: 'flex' }}>

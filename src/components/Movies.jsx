@@ -10,15 +10,19 @@ class Movies extends React.Component {
             if (this.props.movies){
 
                 return(
-                    <ListGroup horizontal >
+                    <>
+                    <h1>MOVIES</h1>
+                    <ListGroup  style={{ justifyContent: 'center', display: 'flex' }}>
 
                         {this.props.movies.map((element, id) => (
                             <ListGroupItem key={id} variant="Primary">
-                                <p>{element.title}</p>
-                                <p>{element.overview}</p>
+                                <h3>{element.title}</h3>
+                                <h4>{element.overview}</h4>
+                                <img src={`https://image.tmdb.org/t/p/w1280${element.image_url}`} width={45} alt={`${element.title} poster`}/>
                             </ListGroupItem>
                         ))}
                     </ListGroup>
+                    </>
                 )
             }
     }
