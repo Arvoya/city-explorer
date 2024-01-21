@@ -30,17 +30,6 @@ class Map extends React.Component {
         display: 'block'
       }
     });
-    console.log("I am the error on the outside:", this.props.error);
-    if(this.props.error !== null){
-    this.setState({
-      imgURL: null,
-      style: {
-        display: 'none'
-      }
-    })
-    console.log("I am the error on the inside: ", this.props.error);
-    }
-
 
   }
   
