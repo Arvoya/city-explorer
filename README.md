@@ -178,8 +178,20 @@ Publish: Deploy your server. As a user, I want to access the City Explorer appli
 
 Estimate of time needed to complete: 1 hour
 
-Start time: 
+Start time: 4:45pm  
+
+Finish time: 5:05pm 
+
+Actual time needed to complete: 20 minutes
+
+---
+
+Refactor: Create components the front-end codebase
+
+Estimate of time needed to complete: 1 hour
+
+Start time: 3:46pm
 
 Finish time: 
 
-Actual time needed to complete:
+Actual time needed to complete: 

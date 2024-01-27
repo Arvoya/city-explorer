@@ -49,13 +49,11 @@ class Explore extends React.Component {
               })
               // * MOVIE RESPONSE
               .then(response => {
-                  console.log('HELLO! ', response.data)
                   this.setState( {
                      movies: response.data
                   })
               })
               .catch(error => {
-                  console.log('Error :', error.message)
                   this.setState({
                       error: error.message,
                       forecast: null,
