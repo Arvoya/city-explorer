@@ -41,6 +41,17 @@
   padding: 1em;
 }
 
+/* Add this to your CSS or SCSS file */
+.weather-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.weather-item {
+  margin: 10px;
+}
+
 @media (max-width: 600px) {
   .map-container,
   .search-container {
