@@ -3,7 +3,8 @@ import axios from 'axios';
 import Map from './Map';
 import Errors from './Errors'
 import Weather from './Weather';
-import Movies from './Movies'
+import Movies from './Movies';
+import Yelp from './Yelp.jsx';
 import CitySearchForm from "./Form";
 
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
@@ -21,6 +22,7 @@ class Explore extends React.Component {
       showModal: false,
       forecast: null,
       movies: null,
+      restaurants: null,
     }
   }
 
@@ -39,6 +41,7 @@ class Explore extends React.Component {
                       location: display_name
                   })
                   return axios.get(`https://city-explorer-api-0g77.onrender.com/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
+                   // return axios.get(`http://localhost:3001/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
               })
               // * WEATHER RESPONSE
               .then(response => {
@@ -46,12 +49,21 @@ class Explore extends React.Component {
                       forecast: response.data
                   })
                   return axios.get(`https://city-explorer-api-0g77.onrender.com/movies?city=${searchQ}`)
+                   // return axios.get(`http://localhost:3001/movies?city=${searchQ}`)
               })
               // * MOVIE RESPONSE
               .then(response => {
                   this.setState( {
                      movies: response.data
                   })
+                   return axios.get(`https://city-explorer-api-0g77.onrender.com/yelp?city=${searchQ}`)
+                  // return axios.get(`http://localhost:3001/yelp?city=${searchQ}`)
+              })
+               // * YELP RESPONSE
+              .then(response => {
+                   this.setState({
+                      restaurants: response.data.data
+                   })
               })
               .catch(error => {
                   this.setState({
@@ -93,6 +105,7 @@ class Explore extends React.Component {
             lon={this.state.lon}
             error={this.state.error}/>
         <Movies movies={this.state.movies}/>
+        <Yelp restaurants={this.state.restaurants}/>
         <Errors
             showModal={this.state.showModal}
             toggleModal={this.toggleModal}

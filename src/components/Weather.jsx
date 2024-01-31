@@ -8,13 +8,13 @@ class Weather extends React.Component  {
 
         if (this.props.forecast) {
             return (
-                 <>
-                 <ListGroup horizontal style={{ justifyContent: 'center', display: 'flex' }}>
+                 <div className='weather-list'>
+                 <ListGroup horizontal >
                     {this.props.forecast.map((element, id) => (
-                         <WeatherDay dayForecast={element} key={id}/>
+                         <WeatherDay dayForecast={element} key={id} className='weather-item'/>
                     ))}
                  </ListGroup>
-                 </>
+                 </div>
             );
         }
     }

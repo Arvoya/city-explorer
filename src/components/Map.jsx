@@ -37,6 +37,7 @@ class Map extends React.Component {
     return (
       <div style={this.state.style} className="map-container">
         {this.state.imgUrl && <img src={this.state.imgUrl} alt="Static Map" />}
+       <br/>
       </div>
     )
   }
