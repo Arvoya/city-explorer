@@ -1,19 +1,26 @@
 import React from 'react';
 import WeatherDay from "./WeatherDay.jsx";
-import ListGroup from 'react-bootstrap/ListGroup';
+import Carousel from 'react-bootstrap/Carousel';
 
+/*
+TODO make it be a stand alone widget with cycling through different days.
+TODO Get name, high and low temp from API
+TODO Background will be grey/transparent
+ */
 class Weather extends React.Component  {
 
     render() {
 
         if (this.props.forecast) {
             return (
-                 <div className='weather-list'>
-                 <ListGroup horizontal >
-                    {this.props.forecast.map((element, id) => (
-                         <WeatherDay dayForecast={element} key={id} className='weather-item'/>
-                    ))}
-                 </ListGroup>
+                 <div className={'weatherHolder'}>
+                      <Carousel slide={false} fade className={"weather-carousel"} >
+                         {this.props.forecast.map((element, id) => (
+                              <Carousel.Item key={id} interval={5000}>
+                              <WeatherDay dayForecast={element} key={id} className='weather-item'/>
+                              </Carousel.Item>
+                         ))}
+                      </Carousel>
                  </div>
             );
         }

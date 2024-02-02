@@ -8,16 +8,16 @@ class Movies extends React.Component {
             if (this.props.movies){
 
                 return(
-                    <>
+                    <div className={'movie-div'}>
                     <h1>MOVIES</h1>
                     <br/>
-                    <ListGroup  style={{ justifyContent: 'center', display: 'flex' }}>
+                    <ListGroup>
                         {this.props.movies.map((element, id) => (
                              <Movie key={id} movie={element}/>
                              ))}
                     </ListGroup>
                     <br/>
-                    </>
+                    </div>
                 )
             }
     }
