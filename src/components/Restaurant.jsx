@@ -1,15 +1,15 @@
 import React from 'react';
-import {ListGroupItem} from 'react-bootstrap';
+import { Figure, FigureCaption, Image } from 'react-bootstrap';
 
 class Restaurant extends React.Component {
 	render(){
 		return (
-			<div >
-				<ListGroupItem variant='Primary' style={{maxWidth: '600px', textAlign: 'center'}}>
-					<h2>{this.props.restaurant.name}</h2>
-					<img src={this.props.restaurant.img} width="100%" alt={`${this.props.restaurant.name} poster`}/>
-				</ListGroupItem>
-			</div>
+				<Figure className={'restaurant-figure'} >
+					<Image className={'restaurant-image'} src={this.props.restaurant.img}/>
+					<FigureCaption className={'restaurant-title'}>
+						{this.props.restaurant.name}
+					</FigureCaption>
+				</Figure>
 		)
 	}
 }

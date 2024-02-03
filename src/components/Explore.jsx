@@ -57,8 +57,8 @@ class Explore extends React.Component {
               })
               // * MOVIE RESPONSE
               .then(response => {
-                  this.setState( {
-                     movies: response.data
+                   this.setState( {
+                        movies: response.data.filter((element, id) => id < 15 )
                   })
                    // return axios.get(`https://city-explorer-api-0g77.onrender.com/yelp?city=${searchQ}`)
                   return axios.get(`http://localhost:3001/yelp?city=${searchQ}`)
