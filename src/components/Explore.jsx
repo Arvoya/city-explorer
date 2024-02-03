@@ -44,24 +44,24 @@ class Explore extends React.Component {
                       lon: lon,
                       location: display_name
                   })
-                  // return axios.get(`https://city-explorer-api-0g77.onrender.com/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
-                   return axios.get(`http://localhost:3001/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
+                  return axios.get(`https://city-explorer-api-0g77.onrender.com/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
+                   // return axios.get(`http://localhost:3001/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
               })
               // * WEATHER RESPONSE
               .then(response => {
                   this.setState( {
                       forecast: response.data
                   })
-                  // return axios.get(`https://city-explorer-api-0g77.onrender.com/movies?city=${searchQ}`)
-                   return axios.get(`http://localhost:3001/movies?city=${searchQ}`)
+                  return axios.get(`https://city-explorer-api-0g77.onrender.com/movies?city=${searchQ}`)
+                   // return axios.get(`http://localhost:3001/movies?city=${searchQ}`)
               })
               // * MOVIE RESPONSE
               .then(response => {
                    this.setState( {
                         movies: response.data.filter((element, id) => id < 15 )
                   })
-                   // return axios.get(`https://city-explorer-api-0g77.onrender.com/yelp?city=${searchQ}`)
-                  return axios.get(`http://localhost:3001/yelp?city=${searchQ}`)
+                   return axios.get(`https://city-explorer-api-0g77.onrender.com/yelp?city=${searchQ}`)
+                  // return axios.get(`http://localhost:3001/yelp?city=${searchQ}`)
               })
                // * YELP RESPONSE
               .then(response => {
