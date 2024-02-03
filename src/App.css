@@ -1,73 +1,492 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Literata:ital,opsz,wght@0,7..72,200;0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;0,7..72,800;1,7..72,200;1,7..72,300;1,7..72,400;1,7..72,500;1,7..72,600;1,7..72,700;1,7..72,800&family=Noto+Sans+Meetei+Mayek:wght@600&display=swap');
+/*
+* Titles font-family: 'Barlow', sans-serif;
+* Text  font-family: 'Literata', serif;
+* HEADER font-family: 'Noto Sans Meetei Mayek', sans-serif;
+ */
+body {
+  background: url('../public/layered-waves-haikei[2].svg') no-repeat center center fixed;
+  background-size: cover;
+  color: #F7F7F7;
+  font-family: 'Literata', serif;
+  font-size: larger;
+}
+
+#heading{
+  font-family: 'Noto Sans Meetei Mayek', sans-serif;
+  font-size: xxx-large;
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+  transition: text-shadow 0.3s;
+}
+
+#heading:hover{
+  text-shadow: 0 0 3px mediumaquamarine;
+}
+
+#heading:active {
+  text-shadow: 0 0 3px mediumaquamarine;
+  color: aquamarine;
+}
+
+.searchBar{
+  font-family: 'Barlow', sans-serif;
+  color: #F7F7F7;
+  width: 700px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  min-width: 350px;
+
+}
+
+.search-button {
+  font-family: 'Barlow', sans-serif;
+  background: transparent;
+  border-radius: 25px !important;
+  border-color: #F7F7F7;
+  transition: 0.1s;
+}
+
+.search-button:hover{
+  cursor: pointer;
+  border-color: #F7F7F7;
+}
+
+.search-button:active{
+  background-color: mediumaquamarine !important;
+}
+
+
+
+.transparent-search {
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0 !important;
+  border-bottom-width: 1.5px !important;
+  color: #F7F7F7;
+}
+
+
+.transparent-search::placeholder{
+  color: #F7F7F7;
+}
+
+.transparent-search:focus {
+  background: transparent;
+  box-shadow: none;
+  border-color: aquamarine;
+  color: #F7F7F7;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  /*padding-right: 25%;*/
+  color: #F7F7F7;
+
+}
+
+.weatherHolder{
+  padding-top: 5%;
+  padding-right: 15px;
+  max-height: 150px;
+  max-width: 350px;
+}
+
+.weather-fig{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-height: 150px;
+  border-radius: 15px;
+  padding-right: 30px;
+  padding-left: 20px;
+  padding-bottom: 15px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  margin-bottom: 15px;
+}
+
+.weather-date{
+  font-size: large;
+  font-family: 'Barlow', sans-serif;
+}
+
+.temp-date-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.weather-temp{
+  font-size: 45px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.weather-description{
+  font-family: 'Literata', serif;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+
+.weather-img{
+  width: 45%;
+  /*height: 50%;*/
+}
+
+.weather-day{
+  color: #F7F7F7;
+}
+.content-container{
+  display: flex;
+  padding-top: 40px;
+  justify-content: space-around;
+}
+
+.location-container{
+  max-height: 500px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  width: 45%;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  margin-bottom: 15px;
+}
+
+
+.map-container {
+  display: flex;
+  align-content:  space-between;
+  padding-top: 5%;
+}
+
+.map-figure{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.map-image{
+  width: 475px;
+  display: flex;
+  align-content: space-around;
+  height: 400px;
+  border-radius: 15px;
+}
+
+.map-caption{
+  align-content: center;
+  font-family: 'Barlow', sans-serif;
+  font-size: x-large;
+  color: #F7F7F7;
+  padding-top: 15px;
+}
+
+.list-content{
+  max-height: 500px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  margin-bottom: 15px;
+}
+
+.movie-carousel .carousel-control-prev{
+  left: -5%
+}
+.movie-carousel .carousel-control-next{
+  right: -5%
+}
+
+.movie-carousel .carousel-indicators{
+  display:none;
+}
+
+.movie-header{
+  font-family: 'Barlow', sans-serif;
+  font-size: x-large;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+
+.movie-carousel-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.movie-figure {
+  margin: 0 7px;
+  padding: 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.movie-image {
+  max-width: 75%;
+  max-height: 75%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
-/* Centering the map image */
-.map-container {
-  max-width: 600px;
-  margin: 0 auto;
+.movie-title {
+  color: #F7F7F7;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1.2em;
+  margin-top: 10px;
+  max-height: 40px;
   overflow: hidden;
+
+}
+
+
+.restaurant-header{
+  font-family: 'Barlow', sans-serif;
+  font-size: x-large;
+  font-weight: bold;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.restaurant-carousel-item {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
-.map-container img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.restaurant-figure {
+  text-align: center;
 }
 
-
-.search-container {
-  max-width: 400px;
-  margin: 0 auto; 
-  padding: 1em;
+.restaurant-image {
+  max-width: 75%;
+  max-height: 75%;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
-@media (max-width: 600px) {
-  .map-container,
-  .search-container {
-    max-width: 100%;
+.restaurant-title {
+  font-family: 'Barlow', sans-serif;
+  color: #F7F7F7;
+  font-size: 1.2em;
+  margin-top: 10px;
+  max-height: 40px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.restaurant-carousel .carousel-indicators{
+  display:none;
+}
+
+.restaurant-carousel .carousel-control-prev{
+  left: -5%
+}
+.restaurant-carousel .carousel-control-next{
+  right: -5%
+}
+
+.TEST {
+  width: 64px; /* Adjust width as needed */
+  height: 64px; /* Adjust height as needed */
+  background: url("../public/snowy-4.svg");
+}
+
+/* Reset styles for mobile devices */
+@media (max-width: 1400px) {
+  /* Reset general styles */
+  .searchBar {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    /* Add more reset styles for searchBar if needed */
   }
-}
 
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: Align items in the center horizontally */
+    justify-content: center;
+    padding-top: 40px;
+    /* Add more reset styles for content-container if needed */
   }
-  to {
-    transform: rotate(360deg);
+
+  .location-container {
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    border: none;
+    width: 90%; /* Adjust width as needed */
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-bottom: auto;*/
+    /*height: fit-content;*/
+    padding-bottom: 15px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .weatherHolder {
+    display: flex;
+    justify-content: center;
+    padding-right: 0;
+    /*padding-top: 5%;*/
+    /*max-height: 150px;*/
+    /*max-width: 100%;*/
+    /* Add more reset styles for weatherHolder if needed */
   }
+
+  .weather-fig {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    max-height: 150px;
+    border-radius: 15px;
+    /*padding-right: 30px;*/
+    /*padding-left: 20px;*/
+    padding-bottom: 15px;
+    /* From https://css.glass */
+    background: rgba(000, 000, 000, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0);
+    backdrop-filter: blur(55px);
+    -webkit-backdrop-filter: blur(55px);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    margin-bottom: 15px;
+  }
+
+  .carousel-indicators {
+    top: 110px; /* Adjust the distance from the bottom */
+  }
+
+  .weather-date {
+    font-size: large;
+    /* Add more reset styles for weather-date if needed */
+  }
+
+  .temp-date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    /* Add more reset styles for temp-date-container if needed */
+  }
+
+  .weather-temp {
+    font-size: 45px;
+    /* Add more reset styles for weather-temp if needed */
+  }
+
+  .weather-description {
+    padding-top: 0;  /* Adjust padding as needed */
+    margin-bottom: 0; /* Adjust margin as needed */
+    /* Add more reset styles for weather-description if needed */
+  }
+
+  .weather-img {
+    width: auto; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    /* Add more reset styles for weather-img if needed */
+  }
+
+  .weather-day {
+    color: #F7F7F7;
+    /* Add more reset styles for weather-day if needed */
+  }
+
+  .list-content {
+    max-height: 100%;
+    /* Add more reset styles for list-content if needed */
+  }
+
+  .map-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 5%;
+    /* Add more reset styles for map-container if needed */
+  }
+
+  .map-figure {
+    padding-left: 0;  /* Adjust padding as needed */
+    padding-right: 0; /* Adjust padding as needed */
+    /* Add more reset styles for map-figure if needed */
+  }
+
+  .map-image {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    border-radius: 0; /* Remove border-radius */
+    /* Add more reset styles for map-image if needed */
+  }
+
+  .map-caption {
+    font-size: large;
+    /* Add more reset styles for map-caption if needed */
+  }
+
+  .movie-div {
+    display: block; /* Change to block for mobile layout */
+    /* Add more reset styles for movie-div if needed */
+  }
+
+  .movies {
+    font-size: large; /* Adjust font size as needed */
+    /* Add more reset styles for movies if needed */
+  }
+
+  .TEST {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    /* Add more reset styles for TEST if needed */
+  }
+
+  /* Add more reset styles for other components as needed */
+
+  /* ... */
 }
 
-.card {
-  padding: 2em;
-}
+/*@media (max-width: 786px) {*/
+/*  .searchBar {*/
+/*    width: 100%; !* Remove the maximum width *!*/
+/*    margin-top: 25%;*/
+/*    margin-bottom: 15%;*/
+/*  }*/
+/*}*/
 
-.read-the-docs {
-  color: #888;
-}
+
+/*@media (max-width: 1200px){*/
+/*  .content-container{*/
+/*    display: block;*/
+/*    align-items: center;*/
+/*  }*/
+
+/*  .location-container{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*  }*/
+/*}*/
+

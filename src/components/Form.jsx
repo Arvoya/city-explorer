@@ -1,27 +1,35 @@
-import React from 'react';
+import { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 
 function CitySearchForm({ citySearched, updateCitySearch, handleForm }) {
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleFocus = () => {
+        setIsFocused(true);
+    };
+
+    const handleBlur = () => {
+        setIsFocused(false);
+    };
+
     return (
-        <div className="search-container">
-            <form onSubmit={handleForm}>
-                <InputGroup className="mb-3">
-                    <Form.Control
-                        value={citySearched}
-                        placeholder="City Name"
-                        aria-label="City Name"
-                        aria-describedby="basic-addon2"
-                        onChange={updateCitySearch}
-                    />
-                    <Button size='lg' variant="primary" type="submit">
-                        Explore!
-                    </Button>
-                </InputGroup>
-                <Form.Text id="cityDescription" muted>
-                    { /* Display location information if available */ }
-                </Form.Text>
-            </form>
-        </div>
+         <div className={`search-container ${isFocused ? 'focused' : ''}`}>
+             <form onSubmit={handleForm}>
+                 <InputGroup size="sm" className={`searchBar ${isFocused ? 'focused' : ''}`}>
+                     <Form.Control
+                          value={citySearched}
+                          placeholder="City Name"
+                          onChange={updateCitySearch}
+                          onFocus={handleFocus}
+                          onBlur={handleBlur}
+                          className="transparent-search"
+                     />
+                     <Button className="search-button" size='sm' variant="secondary" type="submit">
+                         Explore!
+                     </Button>
+                 </InputGroup>
+             </form>
+         </div>
     );
 }
 

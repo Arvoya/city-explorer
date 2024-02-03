@@ -3,9 +3,14 @@ import axios from 'axios';
 import Map from './Map';
 import Errors from './Errors'
 import Weather from './Weather';
-import Movies from './Movies'
+import Movies from './Movies';
+import Yelp from './Yelp.jsx';
 import CitySearchForm from "./Form";
 
+/*
+TODO Add Trails/Hiking/Camping to website
+TODO use https://www.nps.gov/subjects/developer/api-documentation.htm in API
+ */
 const API_KEY = import.meta.env.VITE_LOCATIONIQ_API;
 
 class Explore extends React.Component {
@@ -21,6 +26,7 @@ class Explore extends React.Component {
       showModal: false,
       forecast: null,
       movies: null,
+      restaurants: null,
     }
   }
 
@@ -39,6 +45,7 @@ class Explore extends React.Component {
                       location: display_name
                   })
                   return axios.get(`https://city-explorer-api-0g77.onrender.com/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
+                   // return axios.get(`http://localhost:3001/weather?city=${searchQ}&lat=${lat}&lon=${lon}`);
               })
               // * WEATHER RESPONSE
               .then(response => {
@@ -46,12 +53,22 @@ class Explore extends React.Component {
                       forecast: response.data
                   })
                   return axios.get(`https://city-explorer-api-0g77.onrender.com/movies?city=${searchQ}`)
+                   // return axios.get(`http://localhost:3001/movies?city=${searchQ}`)
               })
               // * MOVIE RESPONSE
               .then(response => {
-                  this.setState( {
-                     movies: response.data
+                   this.setState( {
+                        movies: response.data.filter((element, id) => id < 15 )
                   })
+                   return axios.get(`https://city-explorer-api-0g77.onrender.com/yelp?city=${searchQ}`)
+                  // return axios.get(`http://localhost:3001/yelp?city=${searchQ}`)
+              })
+               // * YELP RESPONSE
+              .then(response => {
+                   console.log(response)
+                   this.setState({
+                      restaurants: response.data
+                   })
               })
               .catch(error => {
                   this.setState({
@@ -81,22 +98,31 @@ class Explore extends React.Component {
   render() {
     return (
       <>
-        <CitySearchForm
-            citySearched={this.state.citySearched}
-            handleForm={this.handleForm}
-            updateCitySearch={this.updateCitySearch}/>
-        <Weather
-            forecast={this.state.forecast} />
-        <Map
-            location={this.state.location}
-            lat={this.state.lat}
-            lon={this.state.lon}
-            error={this.state.error}/>
-        <Movies movies={this.state.movies}/>
-        <Errors
+             <CitySearchForm
+                 citySearched={this.state.citySearched}
+                 handleForm={this.handleForm}
+                 updateCitySearch={this.updateCitySearch}/>
+           {this.state.location ? (
+                <div className={'content-container'}>
+                     <div className={'location-container'}>
+                          <Map
+                               location={this.state.location}
+                               lat={this.state.lat}
+                               lon={this.state.lon}
+                               error={this.state.error}/>
+                          <Weather
+                               forecast={this.state.forecast}/>
+                     </div>
+                     <div className={'list-content'}>
+                          <Movies movies={this.state.movies}/>
+                          <Yelp restaurants={this.state.restaurants}/>
+                     </div>
+                </div>
+           ) : null}
+       <Errors
             showModal={this.state.showModal}
             toggleModal={this.toggleModal}
-            errorMessage={this.state.error}/>
+                 errorMessage={this.state.error}/>
       </>
     )
   }

@@ -1,5 +1,8 @@
 import React from 'react';
-
+/*
+TODO Center Heading
+TODO Better Fonts
+ */
 
 class Header extends React.Component {
 
@@ -10,8 +13,9 @@ class Header extends React.Component {
   render() {
     return (
       <>
-      <h1 onClick={this.refreshPage} style={{cursor: 'pointer'}}>City Explorer</h1>
-      <br />
+      <h1 id={'heading'} onClick={this.refreshPage} style={{cursor: 'pointer'}}>City Explorer</h1>
+        {/*<div className="TEST"></div>*/}
+        <br/>
       </>
     )
   }
